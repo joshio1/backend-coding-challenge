@@ -33,6 +33,10 @@ gem 'pagy'
 gem 'factory_bot_rails', '~> 6.1.0', require: false
 gem 'ffaker', '~> 2.17'
 
+group :development, :test do
+  gem 'rswag'
+end
+
 group :development do
   gem 'annotate'
   gem 'listen'

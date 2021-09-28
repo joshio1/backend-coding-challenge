@@ -1,0 +1,44 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/airports":
+    get:
+      summary: Fetches Airports
+      tags:
+      - Airport
+      responses:
+        '200':
+          description: Airports found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  airports:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        city:
+                          type: string
+                        country:
+                          type: string
+                        id:
+                          type: string
+                      required:
+                      - name
+                      - city
+                      - country
+                      - id
+                required:
+                - airports
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
