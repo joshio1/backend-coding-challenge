@@ -24,6 +24,7 @@
 #
 # Indexes
 #
+#  index_airports_on_country                 (country)
 #  index_airports_on_iata                    (iata) UNIQUE
 #  index_airports_on_iata_and_icao_and_name  (iata,icao,name)
 #  index_airports_on_icao                    (icao)

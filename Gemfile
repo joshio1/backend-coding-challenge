@@ -29,6 +29,8 @@ gem 'api-pagination'
 gem 'blueprinter'
 gem 'pagy'
 
+gem 'dry-struct'
+
 # factory_bot also used for seed data in development
 gem 'factory_bot_rails', '~> 6.1.0', require: false
 gem 'ffaker', '~> 2.17'
