@@ -9,6 +9,15 @@ paths:
       summary: Fetches Airports
       tags:
       - Airport
+      parameters:
+      - name: countries[]
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: string
       responses:
         '200':
           description: Airports found
@@ -22,17 +31,18 @@ paths:
                     items:
                       type: object
                       properties:
-                        name:
+                        iata:
                           type: string
-                        city:
+                        name:
                           type: string
                         country:
                           type: string
                         id:
                           type: string
+                      additionalProperties: false
                       required:
                       - name
-                      - city
+                      - iata
                       - country
                       - id
                 required:

@@ -35,6 +35,7 @@ gem 'ffaker', '~> 2.17'
 
 group :development, :test do
   gem 'rswag'
+  gem 'pry-rails'
 end
 
 group :development do

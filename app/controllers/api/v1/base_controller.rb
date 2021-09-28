@@ -2,6 +2,7 @@ module API
   module V1
     class CustomValidationError < StandardError; end
     class BaseController < ActionController::API
+      include Pagy::Backend
       respond_to :json
 
       rescue_from CustomValidationError,

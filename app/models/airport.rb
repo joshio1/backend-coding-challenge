@@ -30,4 +30,9 @@
 #  index_airports_on_name                    (name)
 #
 class Airport < ApplicationRecord
+  include Filterable
+
+  scope :countries, -> (countries) {
+    where(country: countries)
+  }
 end

@@ -7,6 +7,11 @@ RSpec.describe 'Airport', type: :request do
     get 'Fetches Airports' do
       tags 'Airport'
       produces 'application/json'
+      let!(:frankfurt_airport) { create(:airport, :fra) }
+      let!(:zurich_airport) { create(:airport, :zrh) }
+
+      parameter name: :'countries[]', in: :query, type: :string
+      parameter name: :'page', in: :query, type: :string
 
       response '200', 'Airports found' do
         schema type: :object,
@@ -14,17 +19,23 @@ RSpec.describe 'Airport', type: :request do
                  airports: { type: :array,
                              items: { type: :object,
                                       properties: {
+                                        iata: { type: :string },
                                         name: { type: :string },
-                                        city: { type: :string },
                                         country: { type: :string },
                                         id: { type: :string }
                                       },
-                                      required: %w[name city country id]
+                                      additionalProperties: false,
+                                      required: %w[name iata country id]
                              } },
                },
                required: ['airports']
 
-        run_test!
+
+        let(:'countries[]') { "Switzerland" }
+        let(:page) { "1" }
+        run_test! do |response|
+          expect(JSON.parse(response.body)["airports"].length).to eq(1)
+        end
       end
 
       # response '404', 'blog not found' do
